@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paul | Personal Webpage</title>
+  <style>
+    :root {
+      --bg: #f7f3ea;
+      --ink: #1f2933;
+      --muted: #5b6472;
+      --accent: #1f7a8c;
+      --accent-dark: #0f4c5c;
+      --paper: #ffffff;
+      --line: #d9d3c7;
+      --shadow: 0 18px 45px rgba(31, 41, 51, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px clamp(20px, 5vw, 72px);
+      background: rgba(247, 243, 234, 0.9);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav a:hover {
+      color: var(--accent-dark);
+    }
+
+    .hero {
+      min-height: 76vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 72px);
+      padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 72px);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 20px;
+      font-size: clamp(2.5rem, 7vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid var(--accent-dark);
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: var(--accent-dark);
+      color: #ffffff;
+    }
+
+    .button.secondary {
+      color: var(--accent-dark);
+      background: transparent;
+    }
+
+    .profile-panel {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      border-radius: 8px;
+      background:
+        linear-gradient(rgba(15, 76, 92, 0.12), rgba(15, 76, 92, 0.12)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80") center/cover;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 22px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .profile-card h2 {
+      margin-bottom: 6px;
+      font-size: 1.4rem;
+    }
+
+    .section {
+      padding: clamp(48px, 7vw, 84px) clamp(20px, 5vw, 72px);
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section h2 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+      color: var(--accent-dark);
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      max-width: 900px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 22px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-item strong {
+      color: var(--accent-dark);
+    }
+
+    .timeline-item p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 24px;
+      padding-bottom: clamp(56px, 8vw, 96px);
+    }
+
+    .site-footer {
+      padding: 24px clamp(20px, 5vw, 72px);
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 820px) {
+      .site-header,
+      .hero,
+      .contact {
+        align-items: flex-start;
+      }
+
+      .site-header,
+      .contact {
+        flex-direction: column;
+      }
+
+      .hero,
+      .grid,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-panel {
+        min-height: 340px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site-header {
+        position: static;
+      }
+
+      .nav {
+        gap: 12px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">Paul</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Personal Webpage</p>
+        <h1>Hello, I am Paul.</h1>
+        <p class="hero-copy">
+          I am a student at Yuan Ze University who enjoys learning new technologies,
+          improving programming skills, and building useful projects step by step.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#about">Get to know me</a>
+          <a class="button secondary" href="#contact">Contact me</a>
+        </div>
+      </div>
+
+      <aside class="profile-panel" aria-label="Study and programming workspace">
+        <div class="profile-card">
+          <h2>Learning by building</h2>
+          <p>
+            This site is a place to introduce myself, share my work, and record my learning journey.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">About</p>
+        <h2>Curious, practical, and always improving.</h2>
+        <p>
+          I like exploring programming concepts and turning them into small projects.
+          My goal is to keep building stronger technical habits while learning how to
+          communicate ideas clearly through the web.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-heading">
+        <p class="eyebrow">Focus Areas</p>
+        <h2>What I am working on</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>Web Development</h3>
+          <p>Creating responsive pages with HTML, CSS, layout systems, and clean visual structure.</p>
+        </article>
+        <article class="card">
+          <h3>Programming Practice</h3>
+          <p>Strengthening problem solving through consistent coding practice and project work.</p>
+        </article>
+        <article class="card">
+          <h3>Learning Notes</h3>
+          <p>Recording useful ideas, experiments, and technical lessons from my learning journey.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="journey">
+      <div class="section-heading">
+        <p class="eyebrow">Journey</p>
+        <h2>Small steps, steady progress</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Now</strong>
+          <p>Developing this personal webpage as a simple portfolio and introduction site.</p>
+        </div>
+        <div class="timeline-item">
+          <strong>Student Life</strong>
+          <p>Studying at Yuan Ze University and learning more about software development.</p>
+        </div>
+        <div class="timeline-item">
+          <strong>Next Goal</strong>
+          <p>Keep adding projects, learning records, and more examples of what I can build.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Let us connect.</h2>
+        <p class="hero-copy">
+          This page can grow with links to GitHub, email, projects, and future portfolio work.
+        </p>
+      </div>
+      <a class="button primary" href="https://github.com/paul33818236">GitHub Profile</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Paul. Built with HTML and CSS.</p>
+  </footer>
+</body>
+</html>
